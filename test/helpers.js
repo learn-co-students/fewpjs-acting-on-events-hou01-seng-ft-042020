@@ -2,6 +2,7 @@ const chai = require('chai')
 global.expect = chai.expect
 const fs = require('file-system')
 const jsdom = require('mocha-jsdom')
+// import 'jsdom-global/register'; 
 const path = require('path')
 const babel = require("@babel/core");
 const url = "http://localhost"
@@ -15,7 +16,8 @@ const babelResult = babel.transformFileSync(
 );
 
 const src = babelResult.code
-
+// before(function () { this.jsdom = require('jsdom-global')()}) 
+// after(function () { this.jsdom()}) 
 jsdom({
   html, src, url
 });
